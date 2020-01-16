@@ -6,13 +6,18 @@ import com.frantun.adapterdelegates.model.BaseModel
 import com.frantun.adapterdelegates.model.Pet
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 
-fun petAdapterDelegate(itemClickedListener: (Pet) -> Unit) =
-    adapterDelegate<Pet, BaseModel>(R.layout.pet) {
-        val txtName: TextView = findViewById(R.id.txtName)
-//    txtName.setCli { itemClickedListener(item) } // Item is automatically set for you. It's set lazily though (set in onBindViewHolder()). So only use it for deferred calls like clickListeners.
-
-        bind { diffPayloads ->
-            // diffPayloads is a List<Any> containing the Payload from your DiffUtils
-            txtName.text = item.name // Item is of type Cat and is the current bound item.
-        }
+fun petAdapterDelegate() = adapterDelegate<Pet, BaseModel>(
+    layout = R.layout.pet,
+    on = { item: BaseModel, items: List<BaseModel>, position: Int ->
+        item is Pet
     }
+) {
+    val txtName: TextView = findViewById(R.id.txtName)
+    val txtSpecie: TextView = findViewById(R.id.txtSpecie)
+
+    bind {
+        txtName.text = item.name
+        txtSpecie.text = item.specie
+    }
+}
+

@@ -18,5 +18,25 @@
     "petId": "4",
     "name": "Michi",
     "specie": "cat"
+  },
+  {
+    "petId": "5",
+    "name": "Pepelucho",
+    "specie": "cat"
+  },
+  {
+    "petId": "6",
+    "name": "Firulais",
+    "specie": "dog"
+  },
+  {
+    "petId": "7",
+    "name": "Gary",
+    "specie": "cat"
+  },
+  {
+    "petId": "8",
+    "name": "Lorenzo",
+    "specie": "parrot"
   }
 ]
